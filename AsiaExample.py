@@ -1,7 +1,6 @@
 from unbbayes.unbbayes import Node, UnBBayes
 
 unb = UnBBayes()
-unb2 = UnBBayes()
 
 nodeList = [
     Node(name="asia", parents=[], states=["yes", "no"], cpt=[0.01, 0.99]),
@@ -14,13 +13,13 @@ nodeList = [
     Node(name="dysp", parents=["bronc", "either"], states=["yes", "no"], cpt=[0.9, 0.1, 0.7, 0.3, 0.8, 0.2, 0.1, 0.9]),
 ]
 
-net = unb.createNetwork("Asia.net", nodeList)
+net = unb.create_network("Asia.net", nodeList)
 
-net = unb.compileNetwork(net)
+net = unb.compile_network(net)
 
 unb.print_network(net)
 
-net = unb.propagateEvidence(unb.setEvidence(net, [("dysp", "yes"), ("smoke", "no")]))
+net = unb.propagate_evidence(unb.set_evidence(net, [("dysp", "yes"), ("smoke", "no")]))
 
 print(" ****** Updating Beliefs ****** ")
 unb.print_network(net)

@@ -9,8 +9,7 @@ class Network:
         self.compiled = False
 
 class Node:
-    
-    def __init__(self, name, parents, states, cpt):
+    def __init__(self, name: str, parents: List[str], states: List[str], cpt: List[float]):
         self.name = name
         self.parents = parents
         self.states = states
@@ -44,7 +43,7 @@ class UnBBayes(metaclass=Singleton):
         self._io = self._gateway.jvm.unbbayes.io
 
     
-    def createJavaNode(self, node: Node):
+    def create_java_node(self, node: Node):
         newNode = self._prs.bn.ProbabilisticNode()
 
         newNode.setName(node.name)
@@ -60,9 +59,9 @@ class UnBBayes(metaclass=Singleton):
         
         return newNode
     
-    def addNode(self, network: Network, node: Node):
+    def add_node(self, network: Network, node: Node):
         net = network.net
-        jNode = self.createJavaNode(node)
+        jNode = self.create_java_node(node)
 
         for parent in node.parents:
             jParent = net.getNode(parent)
@@ -73,11 +72,11 @@ class UnBBayes(metaclass=Singleton):
 
         return network
     
-    def createNetwork(self, name: str, nodeList: List[Node]):
+    def create_network(self, name: str, nodeList: List[Node]):
         net = self._prs.bn.ProbabilisticNetwork(name)
 
         for node in nodeList:
-            jNode = self.createJavaNode(node)
+            jNode = self.create_java_node(node)
 
             net.addNode(jNode)
         
@@ -89,12 +88,12 @@ class UnBBayes(metaclass=Singleton):
 
         return Network(net)
     
-    def createNetworkFromFile(self, path: str):
+    def create_network_from_file(self, path: str):
         file = self._gateway.jvm.java.io.File(path)
         net = self._io.NetIO().load(file)
         return Network(net)
 
-    def saveNetwork(self, path: str, network: Network):
+    def save_network(self, path: str, network: Network):
         file = self._gateway.jvm.java.io.File(path)
         self._io.NetIO().save(file, network.net)
 
@@ -110,7 +109,7 @@ class UnBBayes(metaclass=Singleton):
             
                 print("----")
 
-    def compileNetwork(self, network: Network):
+    def compile_network(self, network: Network):
         network.compiled = True
 
         net = network.net
@@ -123,9 +122,9 @@ class UnBBayes(metaclass=Singleton):
 
         return network
     
-    def setEvidence(self, pyNet: Network, evidences):
+    def set_evidence(self, pyNet: Network, evidences):
         if not pyNet.compiled:
-            network = self.compileNetwork(pyNet)
+            network = self.compile_network(pyNet)
         else:
             network = pyNet
 
@@ -141,9 +140,9 @@ class UnBBayes(metaclass=Singleton):
         
         return network
     
-    def propagateEvidence(self, pyNet: Network):
+    def propagate_evidence(self, pyNet: Network):
         if not pyNet.compiled:
-            network = self.compileNetwork(pyNet)
+            network = self.compile_network(pyNet)
         else:
             network = pyNet
         
