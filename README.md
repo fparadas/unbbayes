@@ -202,6 +202,16 @@ E, por fim, sua terceira responsabilidade é fornecer funções para o programad
 
 ## Modelos exemplos
 
+Para este trabalho, quatro exemplos principais foram implementados. O modelo e implementação de cada exemplo será explicado dentro dessa sessão.
+
+### Asia
+
+### Mildew 3.2
+
+### COVID19 - Rede Simples
+
+### COVID19 - Naive Bayes
+
 ---
 
 ## Referências
