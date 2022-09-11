@@ -2,7 +2,7 @@ from unbbayes.unbbayes import UnBBayes
 
 unb = UnBBayes()
 
-net = unb.create_network_from_file("asia.net")
+net = unb.create_network_from_file("examples/asia.net")
 
 net = unb.compile_network(net)
 
