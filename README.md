@@ -202,7 +202,7 @@ E, por fim, sua terceira responsabilidade é fornecer funções para o programad
 
 ## Modelos exemplos
 
-Para este trabalho, quatro exemplos principais foram implementados. O modelo e implementação de cada exemplo será explicado dentro dessa sessão.
+Para este trabalho, três exemplos principais foram implementados. O modelo e implementação de cada exemplo será explicado dentro dessa sessão.
 
 ### Asia
 
